@@ -1,4 +1,4 @@
-const { Prikazi } = require('../models');
+const { Prikazi } = require('../models/prikazModel');
 
 async function getPrikazi(req, res) {
     try {

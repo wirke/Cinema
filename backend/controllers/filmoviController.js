@@ -1,4 +1,4 @@
-const { Filmovi } = require('../models');
+const { Filmovi } = require('../models/filmModel');
 
 async function getFilmovi(req, res) {
     try {

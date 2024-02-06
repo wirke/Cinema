@@ -1,4 +1,4 @@
-const { Prostorije } = require('../models');
+const { Prostorije } = require('../models/prostorijaModel');
 
 async function getProstorije(req, res) {
     try {
