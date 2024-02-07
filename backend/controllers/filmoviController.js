@@ -12,8 +12,8 @@ async function getFilmovi(req, res) {
 
 async function kreirajFilm(req, res) {
   try {
-    const { naziv, opis, godina, zanr } = req.body;
-    const noviFilm = await Film.kreirajFilm(naziv, opis, godina, zanr);
+    const { naziv, opis, zanr } = req.body;
+    const noviFilm = await Film.kreirajFilm(naziv, opis, zanr);
     res.json({ message: 'Film uspešno kreiran', film: noviFilm });
   } catch (error) {
     console.error('Greška pri kreiranju filma:', error);

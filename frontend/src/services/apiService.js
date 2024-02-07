@@ -9,15 +9,13 @@ const apiService = axios.create({
 
 export const filmoviService = {
   async dohvatiFilmove() {
-    return apiService.get('/filmovi');
+    return axios.get(`${API_URL}/filmovi`);
   },
-
   async kreirajFilm(noviFilm) {
-    return apiService.post('/filmovi', noviFilm);
+    return axios.post(`${API_URL}/filmovi`, noviFilm);
   },
-
   async obrisiFilm(id) {
-    return apiService.delete(`/filmovi/${id}`);
+    return axios.delete(`${API_URL}/filmovi/${id}`);
   }
 };
 
