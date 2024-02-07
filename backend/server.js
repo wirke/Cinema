@@ -11,7 +11,6 @@ const port = 3000;
 
 app.use(bodyParser.json());
 
-app.use('/api', korisniciRouter);
 app.use('/api', rezervacijeRouter);
 app.use('/api', prikaziRouter);
 app.use('/api', filmoviRouter);
