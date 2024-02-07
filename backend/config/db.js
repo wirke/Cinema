@@ -1,13 +1,13 @@
-const pgp = require('pg-promise')();
+const mysql = require('mysql');
 
 const dbConfig = {
   host: 'localhost',
-  port: 5432,
+  port: 3307,
   database: 'bioskop',
-  user: 'korisnik',
-  password: 'lozinka'
+  user: 'root',
+  password: ''
 };
 
-const db = pgp(dbConfig);
+const connection = mysql.createConnection(dbConfig);
 
-module.exports = db;
+module.exports = connection;

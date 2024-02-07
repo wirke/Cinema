@@ -1,6 +1,6 @@
 const express = require('express');
+const mysql = require('mysql');
 const bodyParser = require('body-parser');
-const korisniciRouter = require('./routes/korisnici');
 const rezervacijeRouter = require('./routes/rezervacije');
 const prikaziRouter = require('./routes/prikazi');
 const filmoviRouter = require('./routes/filmovi');

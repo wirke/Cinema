@@ -1,52 +1,62 @@
+// apiService.js
 import axios from 'axios';
 
 const API_URL = 'http://localhost:3000/api';
 
-export default {
+const apiService = axios.create({
+  baseURL: API_URL
+});
 
-  async getFilmovi() {
-      try {
-        const response = await axios.get(`${API_URL}/filmovi`);
-        return response.data;
-      } catch (error) {
-        console.error('Greska pri ocitavanju filmova:', error);
-        throw error;
-      }
-    },
-  async getKorisnici() {
-    try {
-      const response = await axios.get(`${API_URL}/korisnici`);
-      return response.data;
-    } catch (error) {
-      console.error('Greska pri ocitavanju korisnika:', error);
-      throw error;
-    }
+export const filmoviService = {
+  async dohvatiFilmove() {
+    return apiService.get('/filmovi');
   },
-  async getPrikazi() {
-    try {
-      const response = await axios.get(`${API_URL}/preikazi`);
-      return response.data;
-    } catch (error) {
-      console.error('Greska pri ocitavanju prikaza:', error);
-      throw error;
-    }
+
+  async kreirajFilm(noviFilm) {
+    return apiService.post('/filmovi', noviFilm);
   },
-  async getProstorije() {
-    try {
-      const response = await axios.get(`${API_URL}/prostorije`);
-      return response.data;
-    } catch (error) {
-      console.error('Greska pri ocitavanju prostorija:', error);
-      throw error;
-    }
-  },
-  async getRezervacije() {
-    try {
-      const response = await axios.get(`${API_URL}/rezervacije`);
-      return response.data;
-    } catch (error) {
-      console.error('Greska pri ocitavanju rezervacija:', error);
-      throw error;
-    }
-  },
+
+  async obrisiFilm(id) {
+    return apiService.delete(`/filmovi/${id}`);
+  }
 };
+
+export const prostorijeService = {
+  async dohvatiProstorije() {
+    return apiService.get('/prostorije');
+  },
+
+  async kreirajProstoriju(novaProstorija) {
+    return apiService.post('/prostorije', novaProstorija);
+  },
+
+  async obrisiProstoriju(id) {
+    return apiService.delete(`/prostorije/${id}`);
+  }
+};
+
+export const prikaziService = {
+  async dohvatiPrikaze() {
+    return apiService.get('/prikazi');
+  },
+
+  async kreirajPrikaz(noviPrikaz) {
+    return apiService.post('/prikazi', noviPrikaz);
+  },
+
+  async obrisiPrikaz(id) {
+    return apiService.delete(`/prikazi/${id}`);
+  }
+};
+
+export const rezervacijeService = {
+  async dohvatiRezervacije() {
+    return apiService.get('/rezervacije');
+  },
+
+  async kreirajRezervaciju(novaRezervacija) {
+    return apiService.post('/rezervacije', novaRezervacija);
+  }
+};
+
+export default apiService;
