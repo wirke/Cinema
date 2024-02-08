@@ -1,22 +1,24 @@
 {
-  "name": "bioskop",
-  "version": "1.0.0",
-  "description": "",
-  "main": "/frontend/src/router/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "devStart": "nodemon server.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^4.18.2"
-  },
-  "devDependencies": {
-    "nodemon": "^3.0.3",
-    "@vue/cli-plugin-babel": "^4.5.12",
-    "@vue/cli-service": "^4.5.12",
-    "vue": "^2.6.14"
+    "name": "bioskop",
+    "version": "1.0.0",
+    "description": "Opis mog projekta",
+    "main": "index.js",
+    "scripts": {
+      "start": "node server.js",
+      "serve": "vue-cli-service serve",
+      "devStart": "nodemon server.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "axios": "^0.21.1",
+      "express": "^4.17.1"
+    },
+    "devDependencies": {
+      "@vue/cli-plugin-babel": "^4.5.12",
+      "@vue/cli-service": "^4.5.12",
+      "vue": "^2.6.14"
+    }
   }
-}
+  

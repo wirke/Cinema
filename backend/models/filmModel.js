@@ -5,8 +5,8 @@ class Film {
     return db.any('SELECT * FROM film');
   }
 
-  static async kreirajFilm(naziv, opis, godina, zanr) {
-    return db.one('INSERT INTO film (naziv, opis, godina, zanr) VALUES ($1, $2, $3, $4) RETURNING *', [naziv, opis, godina, zanr]);
+  static async kreirajFilm(naziv, opis, zanr) {
+    return db.one('INSERT INTO film (naziv, opis, zanr) VALUES ($1, $2, $3, $4) RETURNING *', [naziv, opis, zanr]);
   }
 
   static async obrisiFilm(id) {
