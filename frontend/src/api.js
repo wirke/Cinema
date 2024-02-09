@@ -100,11 +100,11 @@ async function sviPrikazi() {
   return response.json();
 }
 
-async function kreirajPrikaz(vremePrikaza, idFilm, idProstorija) {
+async function kreirajPrikaz(vremePrikaza, id_Film, id_Prostorija) {
   const prikazData = {
     vremePrikaza: vremePrikaza,
-    idFilm: idFilm,
-    idProstorija: idProstorija
+    id_Film: id_Film,
+    id_Prostorija: id_Prostorija
   };
 
   const response = await fetch(`${API_BASE_URL}/prikazi`, {
@@ -141,12 +141,12 @@ async function sveRezervacije() {
   return response.json();
 }
 
-async function kreirajRezervaciju(sediste, datum, imeKupca, idPrikaz) {
+async function kreirajRezervaciju(sediste, datum, imeKupca, id_Prikaz) {
   const rezervacijaData = {
     sediste: sediste,
     datum: datum,
     imeKupca: imeKupca,
-    idPrikaz: idPrikaz
+    id_Prikaz: id_Prikaz
   };
 
   const response = await fetch(`${API_BASE_URL}/rezervacije`, {
