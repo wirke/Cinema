@@ -2,10 +2,10 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const filmoviRouter = require('../Cinema/backend/routes/filmovi');
-const prostorijeRouter = require('../Cinema/backend/routes/prostorije');
-const prikaziRouter = require('../Cinema/backend/routes/prikazi');
-const rezervacijeRouter = require('../Cinema/backend/routes/rezervacije');
+const filmoviRouter = require('./routes/filmovi');
+const prostorijeRouter = require('./routes/prostorije');
+const prikaziRouter = require('./routes/prikazi');
+const rezervacijeRouter = require('./routes/rezervacije');
 
 app.use(express.json());
 
