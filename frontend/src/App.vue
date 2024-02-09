@@ -1,15 +1,14 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <Navbar msg="Tekst za navbar"/>
+  <NavBar msg="BIOSKOP"/>
 </template>
 
 <script>
-import Navbar from './components/Navbar.vue'
+import NavBar from './components/Navbar.vue'
 
 export default {
   name: 'App',
   components: {
-    Navbar
+    NavBar
   }
 }
 </script>
