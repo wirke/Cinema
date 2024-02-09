@@ -5,8 +5,8 @@ class Prostorija {
     return db.any('SELECT * FROM prostorija');
   }
 
-  static async kreirajProstoriju(naziv, brojSedista, cenaSedista) {
-    return db.one('INSERT INTO prostorija (naziv, brojSedista, cenaSedista) VALUES ($1, $2, $3) RETURNING *', [naziv, brojSedista, cenaSedista]);
+  static async kreirajProstoriju(naziv, visinaProstorije, duzinaProstorije, cenaSedista) {
+    return db.one('INSERT INTO prostorija (naziv, visinaProstorije, duzinaProstorije, cenaSedista) VALUES ($1, $2, $3, $4) RETURNING *', [naziv, visinaProstorije, duzinaProstorije, cenaSedista]);
   }
 
   static async obrisiProstoriju(id) {

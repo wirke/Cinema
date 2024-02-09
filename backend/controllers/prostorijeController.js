@@ -12,8 +12,8 @@ async function getProstorije(req, res) {
 
 async function kreirajProstoriju(req, res) {
   try {
-    const { naziv, brojSedista, cenaSedista } = req.body;
-    const novaProstorija = await Prostorija.kreirajProstoriju(naziv, brojSedista, cenaSedista);
+    const { naziv, visinaProstorije, duzinaProstorije, cenaSedista } = req.body;
+    const novaProstorija = await Prostorija.kreirajProstoriju(naziv, visinaProstorije, duzinaProstorije, cenaSedista);
     res.json({ message: 'Prostorija uspešno kreirana', prostorija: novaProstorija });
   } catch (error) {
     console.error('Greška pri kreiranju prostorije:', error);

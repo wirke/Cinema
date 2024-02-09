@@ -58,10 +58,11 @@ async function sveProstorije() {
   return response.json();
 }
 
-async function kreirajProstoriju(naziv, brojSedista, cenaSedista) {
+async function kreirajProstoriju(naziv, visinaProstorije, duzinaProstorije, cenaSedista) {
   const prostorijaData = {
     naziv: naziv,
-    brojSedista: brojSedista,
+    visinaProstorije: visinaProstorije,
+    duzinaProstorije: duzinaProstorije,
     cenaSedista: cenaSedista
   };
 
