@@ -1,6 +1,10 @@
 const db = require('../config/db');
 
 class Film {
+  static async getFilm(){
+    return db.one('SELECT * FROM film WHERE id = $1', [id]);
+  }
+  
   static async sviFilmovi() {
     return db.any('SELECT * FROM film');
   }

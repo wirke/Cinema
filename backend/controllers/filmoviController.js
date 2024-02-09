@@ -1,5 +1,15 @@
 const { Film } = require('../models/filmModel');
 
+async function getFilm(req, res){
+  try {
+    const { id } = req.params;
+    await Film.getFilm(id);
+  } catch (error) {
+    console.error('Greška pri dohvatanju filma:', error);
+    res.status(500).json({ error: 'Greška pri dohvatanju filma' });
+  }
+}
+
 async function getFilmovi(req, res) {
   try {
     const filmovi = await Film.sviFilmovi();
@@ -33,6 +43,7 @@ async function obrisiFilm(req, res) {
 }
 
 module.exports = {
+  getFilm,
   getFilmovi,
   kreirajFilm,
   obrisiFilm

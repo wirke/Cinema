@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const { getPrikazi, kreirajPrikaz, obrisiPrikaz } = require('../controllers/prikaziController');
+const prikaziController = require('../controllers/prikaziController');
 
-router.get('/prikazi', getPrikazi);
-router.post('/prikazi', kreirajPrikaz);
-router.delete('/prikazi/:id', obrisiPrikaz);
+router.get('/prikazi', prikaziController.getPrikazi);
+router.post('/prikazi', prikaziController.kreirajPrikaz);
+router.delete('/prikazi/:id', prikaziController.obrisiPrikaz);
 
 module.exports = router;
