@@ -1,9 +1,16 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      Kuca dobre zabave
-    </p>
+  <div id="navbar">
+    <div>
+      <h1>{{ msg }}</h1>
+      <p>Kuća dobre zabave</p>
+    </div>
+
+    <div>
+      <router-link to="/">Početna </router-link>
+      <router-link to="/repertoar">Repertoar </router-link>
+      <router-link to="/admin">Admin </router-link>
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
@@ -17,6 +24,13 @@ export default {
 </script>
 
 <style scoped>
+@import "~bulma/css/bulma.css";
+#navbar{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
 h3 {
   margin: 40px 0 0;
 }

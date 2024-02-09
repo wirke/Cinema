@@ -1,14 +1,17 @@
 <template>
   <NavBar msg="BIOSKOP"/>
+  <Rezervacije></Rezervacije>
 </template>
 
 <script>
 import NavBar from './components/Navbar.vue'
+import Rezervacije from './components/Rezervacije.vue'
 
 export default {
   name: 'App',
   components: {
-    NavBar
+    NavBar,
+    Rezervacije
   }
 }
 </script>
@@ -28,6 +31,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
