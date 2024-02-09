@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const { getRezervacije, kreirajRezervaciju } = require('../controllers/rezervacijeController');
+const rezervacijeController = require('../controllers/rezervacijeController');
 
-router.get('/rezervacije', getRezervacije);
-router.post('/rezervacije', kreirajRezervaciju);
+router.get('/rezervacije', rezervacijeController.getRezervacije);
+router.post('/rezervacije', rezervacijeController.kreirajRezervaciju);
 
 module.exports = router;
