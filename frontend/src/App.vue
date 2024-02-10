@@ -1,19 +1,3 @@
-<template>
-  <header id="navbar">
-      <h1>BIOSKOP</h1>
-    <nav>
-      <router-link to="/">Početna</router-link> |
-      <router-link to="/repertoar">Repertoar</router-link> |
-      <router-link to="/admin">Admin</router-link>
-    </nav>
-    <div id="profil">
-      <RezervacijeC>
-      </RezervacijeC>
-    </div>
-  </header>
- <router-view/>
-</template>
-
 <script>
 import { RouterLink, RouterView } from 'vue-router'
 export default {
@@ -25,6 +9,21 @@ export default {
 }
 </script>
 
+<template>
+  <header id="navbar">
+      <h1>BIOSKOP</h1>
+    <nav>
+      <router-link to="/"><p>Početna</p></router-link>
+      <router-link to="/repertoar"><p>Repertoar</p></router-link>
+      <router-link to="/admin"><p>Admin</p></router-link>
+    </nav>
+    <a id="profil">
+      <RezervacijeC>
+      </RezervacijeC>
+    </a>
+  </header>
+ <router-view/>
+</template>
 
 <style>
 @font-face {
@@ -51,12 +50,13 @@ export default {
   border-bottom-left-radius: 50px;
   border-bottom-right-radius: 50px;
   background-color: #F1654A;
+  height: fit-content;
 }
 #profil{
-  width: 50px;
-  height: 50px;
+  padding: 50px;
   background-color: #363030;
-  border-radius: 15px;
+  border-radius: 35px;
+  margin-right: 7px;
 }
 ul {
   list-style-type: none;
@@ -69,5 +69,21 @@ li {
 a {
   text-decoration: none;
   color: #363030;
+}
+h1{
+  margin-left: 7px;
+  margin: 0;
+  font-size: 100px;
+}
+p{
+  padding: 15px;
+  margin-left: 10px;
+  border-radius: 20px;
+  background-color: #F8E2B9;
+  font-size: 25px;
+}
+nav{
+  display: flex;
+  flex-direction: row;
 }
 </style>

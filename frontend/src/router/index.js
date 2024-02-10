@@ -1,8 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Pocetna from '../views/Pocetna.vue'
-import Repertoar from '../views/Repertoar.vue'
-import Admin from '../views/Admin.vue'
-
 const router = createRouter({
   history: createWebHistory('/'),
   routes: [
@@ -14,12 +11,12 @@ const router = createRouter({
     {
       path: '/repertoar',
       name: 'Repertoar',
-      component: Repertoar
+      component: () => import('../views/Repertoar.vue')
     },
     {
       path: '/admin',
       name: 'Admin',
-      component: Admin
+      component: () => import('../views/AdminPage.vue')
     }
   ]
 })

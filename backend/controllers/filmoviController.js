@@ -10,7 +10,7 @@ async function getFilm(req, res){
   }
 }
 
-async function getFilmovi(req, res) {
+async function sviFilmovi(req, res) {
   try {
     const filmovi = await Film.sviFilmovi();
     res.json(filmovi);
@@ -44,7 +44,7 @@ async function obrisiFilm(req, res) {
 
 module.exports = {
   getFilm,
-  getFilmovi,
+  sviFilmovi,
   kreirajFilm,
   obrisiFilm
 };

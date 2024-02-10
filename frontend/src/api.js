@@ -1,7 +1,7 @@
 const API_BASE_URL = 'http://localhost:3000/api';
 
 // FILM
-async function getFilmovi() {
+async function sviFilmovi() {
   const response = await fetch(`${API_BASE_URL}/filmovi`);
   if (!response.ok) {
     throw new Error(`HTTP error! Status: ${response.status}`);
@@ -166,7 +166,7 @@ async function kreirajRezervaciju(sediste, datum, imeKupca, id_Prikaz) {
 
 export {
   //FILM
-  getFilmovi,
+  sviFilmovi,
   getFilm,
   kreirajFilm,
   obrisiFilm,

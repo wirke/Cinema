@@ -1,20 +1,52 @@
-const db = require('../config/db');
+const connection = require('../config/db');
 
 class Film {
-  static async getFilm(){
-    return db.one('SELECT * FROM film WHERE id = $1', [id]);
+  static async getFilm(id) {
+    return new Promise((resolve, reject) => {
+      connection.query('SELECT * FROM film WHERE id = ?', [id], (error, results) => {
+        if (error) {
+          reject(error);
+          return;
+        }
+        resolve(results[0]);
+      });
+    });
   }
-  
+
   static async sviFilmovi() {
-    return db.any('SELECT * FROM film');
+    return new Promise((resolve, reject) => {
+      connection.query('SELECT * FROM film', (error, results) => {
+        if (error) {
+          reject(error);
+          return;
+        }
+        resolve(results);
+      });
+    });
   }
 
   static async kreirajFilm(naziv, opis, zanr) {
-    return db.one('INSERT INTO film (naziv, opis, zanr) VALUES ($1, $2, $3, $4) RETURNING *', [naziv, opis, zanr]);
+    return new Promise((resolve, reject) => {
+      connection.query('INSERT INTO film (naziv, opis, zanr) VALUES (?, ?, ?)', [naziv, opis, zanr], (error, results) => {
+        if (error) {
+          reject(error);
+          return;
+        }
+        resolve(results.insertId);
+      });
+    });
   }
 
   static async obrisiFilm(id) {
-    return db.none('DELETE FROM film WHERE id = $1', [id]);
+    return new Promise((resolve, reject) => {
+      connection.query('DELETE FROM film WHERE id = ?', [id], (error, results) => {
+        if (error) {
+          reject(error);
+          return;
+        }
+        resolve();
+      });
+    });
   }
 }
 
