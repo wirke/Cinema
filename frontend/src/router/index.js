@@ -1,20 +1,27 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
-import AdminAdmin from '@/views/Admin.vue';
-import Pocetna from '@/views/Pocetna.vue';
-import Repertoar from '@/views/Repertoar.vue';
+import { createRouter, createWebHistory } from 'vue-router'
+import Pocetna from '../views/Pocetna.vue'
+import Repertoar from '../views/Repertoar.vue'
+import Admin from '../views/Admin.vue'
 
-Vue.use(VueRouter);
+const router = createRouter({
+  history: createWebHistory('/'),
+  routes: [
+    {
+      path: '/',
+      name: 'Pocetna',
+      component: Pocetna
+    },
+    {
+      path: '/repertoar',
+      name: 'Repertoar',
+      component: Repertoar
+    },
+    {
+      path: '/admin',
+      name: 'Admin',
+      component: Admin
+    }
+  ]
+})
 
-const routes = [
-  { path: '/', component: Pocetna },
-  { path: '/admin', component: AdminAdmin },
-  { path: '/repertoar', component: Repertoar }
-];
-
-const router = new VueRouter({
-  mode: 'history',
-  routes
-});
-
-export default router;
+export default router
