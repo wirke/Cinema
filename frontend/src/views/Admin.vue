@@ -1,5 +1,5 @@
 <template>
-<div>
+<div id="app">
   <AdminFilm></AdminFilm>
   <AdminPrikaz></AdminPrikaz>
   <AdminProstorija></AdminProstorija>
