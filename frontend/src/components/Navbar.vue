@@ -12,14 +12,22 @@
       <router-view></router-view>
     </div>
   </div>
+  <div>
+    <RezervacijeC>
+    </RezervacijeC>
+  </div>
 </template>
 
 <script>
+import RezervacijeC from '../components/Rezervacije.vue'
 export default {
   name: 'NavBar',
   props: {
-    msg: String
-  }
+    msg: String,
+  },
+  components:{
+    RezervacijeC,
+  },
 }
 </script>
 
