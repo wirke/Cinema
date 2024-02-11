@@ -27,7 +27,7 @@ const getProstorija = (id, result) => {
 }
 
 const kreirajProstoriju = (data, result) => {
-    if (!data.ime || !data.visinaProstorije || !data.duzinaProstorije || !data.cenaSedista) {
+    if (!data.ime || !data.visinaProstorije || !data.duzinaProstorije) {
         result({ message: "Missing required fields" }, null);
     } else {
         db.query("INSERT INTO prostorija SET ?", [data], (err, results) => {
@@ -51,6 +51,5 @@ const obrisiProstoriju = (id, result) => {
         }
     });
 }
-//napisi getProstorija
 
 export { sveProstorije, getProstorija, kreirajProstoriju, obrisiProstoriju };

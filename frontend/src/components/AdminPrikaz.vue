@@ -2,7 +2,6 @@
   <div>
     <h3>Unos novog prikaza</h3>
     <div class="form-group">
-      <label for="vremePrikaza">Datum i vreme: </label>
       <input type="datetime-local" id="vremePrikaza" v-model="noviPrikaz.vremePrikaza">
       <label for="film_id">
         <p>Izaberi film</p>
@@ -16,6 +15,7 @@
       <select v-model="noviPrikaz.id_prostorija">
         <option v-for="prostorija in prostorije" :value="prostorija.id" :key="prostorija.id">{{ prostorija.naziv }}</option>
       </select>
+      <input type="number" v-model="noviPrikaz.cenaKarte" placeholder="Cena karte">
       <button @click="dodajPrikaz">Dodaj prikaz</button>
     </div>
 
@@ -25,6 +25,7 @@
         <h4>{{ prikaz.vremePrikaza }}</h4>
         <p>Film: {{ prikaz.nazivFilma }}</p>
         <p>Prostorija: {{ prikaz.nazivProstorije }}</p>
+        <p>Cena karte: {{ prikaz.cenaKarte }}</p>
         <button @click="obrisiPrikaz(prikaz.id)">Obriši prikaz</button>
       </li>
     </ul>
@@ -33,23 +34,14 @@
 
 <script>
 import axios from 'axios';
-import { onMounted } from 'vue'; // Dodajemo import onMounted
+import { ref, onMounted } from 'vue';
 
 export default {
-  data() {
-    return {
-      noviPrikaz: {
-        vremePrikaza: null,
-        id_film: null,
-        id_prostorija: null
-      },
-      filmovi: [], // Dodajemo inicijalizaciju filmova
-      prostorije: [], // Dodajemo inicijalizaciju prostorija
-      prikazi: [] // Dodajemo inicijalizaciju prikaza
-    }
-  },
-  // Uzimamo podatke kada se komponenta montira
   setup() {
+    const filmovi = ref([]);
+    const prostorije = ref([]);
+    const prikazi = ref([]);
+    
     onMounted(async () => {
       try {
         const responseFilmovi = await axios.get('http://localhost:5000/FilmController');
@@ -57,19 +49,19 @@ export default {
         const responsePrikazi = await axios.get('http://localhost:5000/PrikazController');
         
         if (responseFilmovi && responseFilmovi.data) {
-          this.filmovi = responseFilmovi.data;
+          filmovi.value = responseFilmovi.data;
         } else {
           console.error('Nema podataka o filmovima.');
         }
         
         if (responseProstorije && responseProstorije.data) {
-          this.prostorije = responseProstorije.data;
+          prostorije.value = responseProstorije.data;
         } else {
           console.error('Nema podataka o prostorijama.');
         }
         
         if (responsePrikazi && responsePrikazi.data) {
-          this.prikazi = responsePrikazi.data;
+          prikazi.value = responsePrikazi.data;
         } else {
           console.error('Nema podataka o prikazima.');
         }
@@ -77,25 +69,32 @@ export default {
         console.error('Greška pri učitavanju podataka:', error);
       }
     });
-  },
-  methods: {
-    async dodajPrikaz() {
+    
+    const noviPrikaz = ref({
+      vremePrikaza: null,
+      id_film: null,
+      id_prostorija: null,
+      cenaKarte: null
+    });
+
+    const dodajPrikaz = async () => {
       try {
-        await axios.post('http://localhost:5000/PrikazController', this.noviPrikaz);
-        this.$emit('prikaz-added');
-        this.noviPrikaz = { vremePrikaza: null, id_film: null, id_prostorija: null };
+        await axios.post('http://localhost:5000/PrikazController', noviPrikaz.value);
+        noviPrikaz.value = { vremePrikaza: null, id_film: null, id_prostorija: null, cenaKarte: null };
       } catch (error) {
         console.error('Greška pri dodavanju prikaza:', error);
       }
-    },
-    async obrisiPrikaz(id) {
+    };
+
+    const obrisiPrikaz = async (id) => {
       try {
         await axios.delete(`http://localhost:5000/PrikazController/${id}`);
-        this.$emit('prikaz-deleted');
       } catch (error) {
         console.error('Greška pri brisanju prikaza:', error);
       }
-    }
+    };
+    
+    return { filmovi, prostorije, prikazi, noviPrikaz, dodajPrikaz, obrisiPrikaz };
   }
 }
 </script>

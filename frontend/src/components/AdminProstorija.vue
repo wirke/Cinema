@@ -69,13 +69,15 @@ export default {
       }
     },
     async obrisiProstoriju(id) {
-      try {
-        await axios.delete(`http://localhost:5000/ProstorijaController/${id}`);
-        this.ucitajProstorije();
-      } catch (error) {
-        console.error('Greška pri brisanju prostorije TEST DA ZNAM KOJI JE:', error);
-      }
-    }
+  try {
+    await axios.delete(`http://localhost:5000/ProstorijaController/${id}`);
+    console.log(`Prostorija sa ID ${id} uspešno obrisana.`);
+    this.ucitajProstorije();
+  } catch (error) {
+    console.error('Greška pri brisanju prostorije:', error);
+  }
+}
+
   }
 }
 </script>

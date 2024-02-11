@@ -1,6 +1,6 @@
 import express from "express";
 import { prikaziFilm, prikaziFilmove, unesiFilm, ukloniFilm } from "../controllers/FilmController.js";
-import { getProstorije, unesiProstoriju, ukloniProstoriju } from "../controllers/ProstorijaController.js"
+import { getProstorije, prikaziProstoriju, unesiProstoriju, ukloniProstoriju } from "../controllers/ProstorijaController.js"
 import { sviPrikazi, prikaziPrikaz, unesiPrikaz, ukloniPrikaz } from "../controllers/PrikazController.js"
 import { prikaziRezervacije, prikaziRezervaciju, unesiRezervaciju, ukloniRezervaciju } from "../controllers/RezervacijaController.js"
 
@@ -12,6 +12,7 @@ router.post("/FilmController", unesiFilm);
 router.delete("/FilmController/:id", ukloniFilm);
 
 router.get("/ProstorijaController", getProstorije);
+router.get("/ProstorijaController", prikaziProstoriju);
 router.post("/ProstorijaController", unesiProstoriju);
 router.delete("ProstorijaController", ukloniProstoriju);
 

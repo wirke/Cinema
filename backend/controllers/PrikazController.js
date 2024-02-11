@@ -25,9 +25,21 @@ export const prikaziPrikaz = (req, res) => {
     });
 };
 
+export const getPrikaziZaFilm = (req, res) => {
+    const filmId = req.params.id;
+    getPrikaziZaFilmId(filmId, (err, results) => {
+        if (err) {
+            res.status(500).json({ error: err.message });
+        } else {
+            res.status(200).json(results);
+        }
+    });
+};
+
+
 export const unesiPrikaz = (req, res) => {
     const data = req.body;
-    if (!data.vremePrikaza || !data.id_film || !data.id_prostorija) {
+    if (!data.vremePrikaza || !data.id_film || !data.id_prostorija || !data.cenaKarte) {
         res.status(400).json({ error: "Nepotpuna forma" });
     } else {
         noviPrikaz(data, (err, results) => {
