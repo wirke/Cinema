@@ -1,19 +1,41 @@
-const db = require('../config/db');
+import db from "../config/database.js"
 
-class Prostorija {
-  static async sveProstorije() {
-    return db.any('SELECT * FROM prostorija');
-  }
-
-  static async kreirajProstoriju(naziv, visinaProstorije, duzinaProstorije, cenaSedista) {
-    return db.one('INSERT INTO prostorija (naziv, visinaProstorije, duzinaProstorije, cenaSedista) VALUES ($1, $2, $3, $4) RETURNING *', [naziv, visinaProstorije, duzinaProstorije, cenaSedista]);
-  }
-
-  static async obrisiProstoriju(id) {
-    return db.none('DELETE FROM prostorija WHERE id = $1', [id]);
-  }
+const sveProstorije = (result) => {
+    db.query("SELECT * FROM prostorija", (err, results) => {
+        if (err) {
+            console.log(err);
+            result(err, null);
+        } else {
+            result(null, results);
+        }
+    });
 }
 
-module.exports = {
-  Prostorija
-};
+const kreirajProstoriju = (data, result) => {
+    if (!data.ime || !data.visinaProstorije || !data.duzinaProstorije || !data.cenaSedista) {
+        result({ message: "Missing required fields" }, null);
+    } else {
+        db.query("INSERT INTO prostorija SET ?", [data], (err, results) => {
+            if (err) {
+                console.log(err);
+                result(err, null);
+            } else {
+                result(null, results);
+            }
+        });
+    }
+}
+
+const obrisiProstoriju = (id, result) => {
+    db.query("DELETE FROM prostorija WHERE id = ?", [id], (err, results) => {
+        if (err) {
+            console.log(err);
+            result(err, null);
+        } else {
+            result(null, results);
+        }
+    });
+}
+//napisi getProstorija
+
+export { sveProstorije, kreirajProstoriju, obrisiProstoriju };

@@ -1,13 +1,11 @@
 <template>
 <div>
-  
+  Repertoar
 </div>
 </template>
 
 <script>
-export default {
-    name: 'RepertoarC',
-  }
+
 </script>
 
 <style>

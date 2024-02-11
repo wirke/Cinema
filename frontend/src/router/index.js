@@ -1,23 +1,29 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Pocetna from '../views/Pocetna.vue'
+import HomeView from '../views/HomeView.vue'
+
 const router = createRouter({
-  history: createWebHistory('/'),
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      name: 'Pocetna',
-      component: Pocetna
+      name: 'home',
+      component: HomeView
     },
     {
       path: '/repertoar',
-      name: 'Repertoar',
-      component: () => import('../views/Repertoar.vue')
+      name: 'repertoar',
+      component: () => import('../views/RepertoarView.vue')
     },
     {
       path: '/admin',
-      name: 'Admin',
-      component: () => import('../views/AdminPage.vue')
-    }
+      name: 'admin',
+      component: () => import('../views/AdminView.vue')
+    },
+    //{
+    //  path: '/film',
+    //  name: 'film',
+    //  component: () => import('../views/FilmVIew.vue')
+    //},
   ]
 })
 

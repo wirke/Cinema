@@ -1,31 +1,25 @@
-<script>
+<script setup>
 import { RouterLink, RouterView } from 'vue-router'
-export default {
-  name: 'App',
-  components:{
-    RouterLink,
-    RouterView
-  }
-}
 </script>
 
 <template>
-  <header id="navbar">
+  <header>
+    <div class="navbar">
       <h1>BIOSKOP</h1>
-    <nav>
-      <router-link to="/"><p>Početna</p></router-link>
-      <router-link to="/repertoar"><p>Repertoar</p></router-link>
-      <router-link to="/admin"><p>Admin</p></router-link>
-    </nav>
-    <a id="profil">
-      <RezervacijeC>
-      </RezervacijeC>
-    </a>
+
+      <nav>
+        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/repertoar">Repertoar</RouterLink>
+        <RouterLink to="/admin">Admin</RouterLink>
+      </nav>
+    </div>
   </header>
- <router-view/>
+
+  <RouterView />
 </template>
 
 <style>
+/*
 @font-face {
     font-family: "MojFont";
     src: url('~@/assets/font/Gilroy-Bold.ttf') format('truetype');
@@ -34,56 +28,71 @@ export default {
     font-family: "MojFont";
     src: url('~@/assets/font/Gilroy-Black.ttf') format('truetype');
 }
-#app {
+#app{
   font-family: "MojFont", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+}
+*/
+</style>
+
+<style scoped>
+header {
+  line-height: 1.5;
+  max-height: 100vh;
+}
+.logo {
+  display: block;
+  margin: 0 auto 2rem;
+}
+
+nav {
+  width: 100%;
+  font-size: 12px;
   text-align: center;
-  color: #2c3e50;
+  margin-top: 2rem;
 }
-#navbar{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 25px;
-  border-bottom-left-radius: 50px;
-  border-bottom-right-radius: 50px;
-  background-color: #F1654A;
-  height: fit-content;
+
+nav a.router-link-exact-active {
+  color: var(--color-text);
 }
-#profil{
-  padding: 50px;
-  background-color: #363030;
-  border-radius: 35px;
-  margin-right: 7px;
+
+nav a.router-link-exact-active:hover {
+  background-color: transparent;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
+
+nav a {
   display: inline-block;
-  margin: 0 10px;
+  padding: 0 1rem;
+  border-left: 1px solid var(--color-border);
 }
-a {
-  text-decoration: none;
-  color: #363030;
+
+nav a:first-of-type {
+  border: 0;
 }
-h1{
-  margin-left: 7px;
-  margin: 0;
-  font-size: 100px;
-}
-p{
-  padding: 15px;
-  margin-left: 10px;
-  border-radius: 20px;
-  background-color: #F8E2B9;
-  font-size: 25px;
-}
-nav{
-  display: flex;
-  flex-direction: row;
+
+@media (min-width: 1024px) {
+  header {
+    display: flex;
+    place-items: center;
+    padding-right: calc(var(--section-gap) / 2);
+  }
+
+  .logo {
+    margin: 0 2rem 0 0;
+  }
+
+  header .wrapper {
+    display: flex;
+    place-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  nav {
+    text-align: left;
+    margin-left: -1rem;
+    font-size: 1rem;
+
+    padding: 1rem 0;
+    margin-top: 1rem;
+  }
 }
 </style>
