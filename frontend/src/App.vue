@@ -5,11 +5,11 @@ import { RouterLink, RouterView } from 'vue-router'
 <template>
   <header>
     <div class="navbar">
-      <h1>BIOSKOP</h1>
+      <RouterLink to="/"><h1>BIOSKOP</h1></RouterLink>
 
       <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/repertoar">Repertoar</RouterLink>
+        <RouterLink to="/repertoar">Repertoar</RouterLink> |
+        <RouterLink to="/rezervacije">Rezervacije</RouterLink> |
         <RouterLink to="/admin">Admin</RouterLink>
       </nav>
     </div>

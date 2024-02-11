@@ -6,10 +6,10 @@
         <input placeholder="Naziv" type="text" id="ime" v-model="novaProstorija.ime">
       </div>
       <div class="form-group">
-        <input placeholder="Visina" type="number" id="visinaProstorije" v-model="novaProstorija.visinaProstorije">
+        <input placeholder="Sedista vertikalno" type="number" id="visinaProstorije" v-model="novaProstorija.visinaProstorije">
       </div>
       <div class="form-group">
-        <input placeholder="Duzina" type="number" id="duzinaProstorije" v-model="novaProstorija.duzinaProstorije">
+        <input placeholder="Sedista horizontalno" type="number" id="duzinaProstorije" v-model="novaProstorija.duzinaProstorije">
       </div>
       <div class="form-group">
         <input placeholder="Cena sedista" type="number" id="cenaSedista" v-model="novaProstorija.cenaSedista">
@@ -73,7 +73,7 @@ export default {
         await axios.delete(`http://localhost:5000/ProstorijaController/${id}`);
         this.ucitajProstorije();
       } catch (error) {
-        console.error('Greška pri brisanju prostorije:', error);
+        console.error('Greška pri brisanju prostorije TEST DA ZNAM KOJI JE:', error);
       }
     }
   }

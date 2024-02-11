@@ -15,15 +15,37 @@ const router = createRouter({
       component: () => import('../views/RepertoarView.vue')
     },
     {
+      path: '/rezervacije',
+      name: 'rezervacije',
+      component: () => import('../views/RezervacijeView.vue')
+    },
+    {
+      path: '/film/:id',
+      name: 'film',
+      component: () => import('../views/FilmView.vue')
+    },
+    {
       path: '/admin',
       name: 'admin',
-      component: () => import('../views/AdminView.vue')
-    },
-    //{
-    //  path: '/film',
-    //  name: 'film',
-    //  component: () => import('../views/FilmVIew.vue')
-    //},
+      component: () => import('../views/AdminView.vue'),
+      children: [
+        {
+          path: 'film',
+          name: 'admin-film',
+          component: () => import('../components/AdminFilm.vue')
+        },        
+        {
+          path: 'prostorija',
+          name: 'admin-prostorija',
+          component: () => import('../components/AdminProstorija.vue')
+        },
+        {
+          path: 'prikaz',
+          name: 'admin-prikaz',
+          component: () => import('../components/AdminPrikaz.vue')
+        }        
+      ]
+    }
   ]
 })
 

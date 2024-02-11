@@ -1,7 +1,7 @@
 import db from "../config/database.js"
 
-const sveProstorije = (result) => {
-    db.query("SELECT * FROM prostorija", (err, results) => {
+const getRezervacije = (result) => {
+    db.query("SELECT * FROM rezervacija", (err, results) => {
         if (err) {
             console.log(err);
             result(err, null);
@@ -11,14 +11,14 @@ const sveProstorije = (result) => {
     });
 }
 
-const getProstorija = (id, result) => {
-    db.query("SELECT * FROM prostorija WHERE id = ?", [id], (err, results) => {
+const getRezervacija = (id, result) => {
+    db.query("SELECT * FROM rezervacija WHERE id = ?", [id], (err, results) => {
         if (err) {
             console.log(err);
             result(err, null);
         } else {
             if (results.length === 0) {
-                result({ message: "Prostorija not found" }, null);
+                result({ message: "Rezervacija not found" }, null);
             } else {
                 result(null, results[0]);
             }
@@ -26,11 +26,11 @@ const getProstorija = (id, result) => {
     });
 }
 
-const kreirajProstoriju = (data, result) => {
-    if (!data.ime || !data.visinaProstorije || !data.duzinaProstorije || !data.cenaSedista) {
+const novaRezervacija = (data, result) => {
+    if (!data.sediste || !data.datum || !data.imeKupca || !data.prikaz_id) {
         result({ message: "Missing required fields" }, null);
     } else {
-        db.query("INSERT INTO prostorija SET ?", [data], (err, results) => {
+        db.query("INSERT INTO rezervacija SET ?", [data], (err, results) => {
             if (err) {
                 console.log(err);
                 result(err, null);
@@ -41,8 +41,8 @@ const kreirajProstoriju = (data, result) => {
     }
 }
 
-const obrisiProstoriju = (id, result) => {
-    db.query("DELETE FROM prostorija WHERE id = ?", [id], (err, results) => {
+const obrisiRezervaciju = (id, result) => {
+    db.query("DELETE FROM rezervacija WHERE id = ?", [id], (err, results) => {
         if (err) {
             console.log(err);
             result(err, null);
@@ -51,6 +51,5 @@ const obrisiProstoriju = (id, result) => {
         }
     });
 }
-//napisi getProstorija
 
-export { sveProstorije, getProstorija, kreirajProstoriju, obrisiProstoriju };
+export { getRezervacija, getRezervacije, novaRezervacija, obrisiRezervaciju };

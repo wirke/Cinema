@@ -1,6 +1,5 @@
 <template>
     <div>
-      
       <div>
         <h3>Unos novog filma</h3>
         <div class="form-group">
@@ -75,10 +74,4 @@
     }
   }
   </script>
-  
-  <style>
-  .form-group {
-    margin-bottom: 1rem;
-  }
-  </style>
   
