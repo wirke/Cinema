@@ -14,8 +14,8 @@
       </label>
       <select v-model="noviPrikaz.id_prostorija">
         <option v-for="prostorija in prostorije" :value="prostorija.id" :key="prostorija.id">{{ prostorija.naziv }}</option>
-      </select>
-      <input type="number" v-model="noviPrikaz.cenaKarte" placeholder="Cena karte">
+      </select><br>
+      <input type="number" v-model="noviPrikaz.cenaKarte" placeholder="Cena karte"><br>
       <button @click="dodajPrikaz">Dodaj prikaz</button>
     </div>
 
@@ -25,7 +25,7 @@
         <h4>{{ prikaz.vremePrikaza }}</h4>
         <p>Film: {{ prikaz.nazivFilma }}</p>
         <p>Prostorija: {{ prikaz.nazivProstorije }}</p>
-        <p>Cena karte: {{ prikaz.cenaKarte }}</p>
+        <p>Cena karte: {{ prikaz.cenaKarte }} RSD</p>
         <button @click="obrisiPrikaz(prikaz.id)">Obriši prikaz</button>
       </li>
     </ul>
@@ -65,6 +65,10 @@ export default {
         } else {
           console.error('Nema podataka o prikazima.');
         }
+
+        console.log('Filmovi:', filmovi.value);
+        console.log('Prostorije:', prostorije.value);
+        console.log('Prikazi:', prikazi.value);
       } catch (error) {
         console.error('Greška pri učitavanju podataka:', error);
       }

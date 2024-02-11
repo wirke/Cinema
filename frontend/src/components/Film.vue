@@ -21,6 +21,7 @@
       </ul>
     </div>
     <div v-else>
+      <br>
       <p>Nema prikaza za ovaj film</p>
     </div>
   </div>
