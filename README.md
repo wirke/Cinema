@@ -1,5 +1,5 @@
 # server:
-- cd frontend
+- cd backend
 - npm run devStart
 # vue:
 - cd frontend
